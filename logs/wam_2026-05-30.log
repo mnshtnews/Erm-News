@@ -1,0 +1,31 @@
+{"time":"2026-05-30T19:33:08.677+03:00","level":"INFO","name":"src.core.logging","message":"Logging initialised","env":"production"}
+{"time":"2026-05-30T19:33:08.677+03:00","level":"INFO","name":"__main__","message":"Eram News Monitor starting","env":"production"}
+{"time":"2026-05-30T19:33:08.677+03:00","level":"INFO","name":"src.core.watchdog","message":"Watchdog started — monitoring pipeline","env":"production"}
+{"time":"2026-05-30T19:33:08.677+03:00","level":"INFO","name":"src.core.pipeline","message":"Starting ArticlePipeline (Eram News) …","env":"production"}
+{"time":"2026-05-30T19:33:08.953+03:00","level":"INFO","name":"src.database.repository","message":"Supabase client connected","env":"production"}
+{"time":"2026-05-30T19:33:11.646+03:00","level":"WARNING","name":"src.database.cache","message":"Redis unavailable (Error 11001 connecting to redis:6379. getaddrinfo failed.) — falling back to in-process deduplication only","env":"production"}
+{"time":"2026-05-30T19:33:11.851+03:00","level":"INFO","name":"src.telegram.sender","message":"Telegram bot initialised (Eram News)","env":"production"}
+{"time":"2026-05-30T19:33:12.586+03:00","level":"INFO","name":"src.scraper.browser","message":"Browser started (headless=True)","env":"production"}
+{"time":"2026-05-30T19:33:13.233+03:00","level":"INFO","name":"src.database.repository","message":"Loaded 97 existing article hashes from DB","env":"production"}
+{"time":"2026-05-30T19:33:13.343+03:00","level":"INFO","name":"src.scraper.eremnews_engine","message":"Seeded 97 known article URLs into seen set","env":"production"}
+{"time":"2026-05-30T19:33:13.343+03:00","level":"INFO","name":"src.core.pipeline","message":"ArticlePipeline started ✓","env":"production"}
+{"time":"2026-05-30T19:33:13.343+03:00","level":"INFO","name":"src.core.pipeline","message":"Monitoring 1 subcategories with 60s interval","env":"production"}
+{"time":"2026-05-30T19:33:13.345+03:00","level":"INFO","name":"src.scraper.eremnews_engine","message":"Polling Eram News: رياضة","env":"production"}
+{"time":"2026-05-30T19:35:48.767+03:00","level":"ERROR","name":"src.core.pipeline","message":"Unhandled error polling رياضة: Couldn't find a tree builder with the features you requested: lxml. Do you need to install a parser library?","env":"production"}
+{"time":"2026-05-30T19:36:48.798+03:00","level":"INFO","name":"src.scraper.eremnews_engine","message":"Polling Eram News: رياضة","env":"production"}
+{"time":"2026-05-30T19:39:19.853+03:00","level":"ERROR","name":"src.core.pipeline","message":"Unhandled error polling رياضة: Couldn't find a tree builder with the features you requested: lxml. Do you need to install a parser library?","env":"production"}
+{"time":"2026-05-30T19:40:19.864+03:00","level":"INFO","name":"src.scraper.eremnews_engine","message":"Polling Eram News: رياضة","env":"production"}
+{"time":"2026-05-30T19:41:30.752+03:00","level":"WARNING","name":"src.scraper.eremnews_engine","message":"Error loading https://www.eremnews.com/sports (attempt 1): Page.wait_for_selector: Target page, context or browser has been closed
+Call log:
+  - waiting for locator("div.td_module_wrap")
+","env":"production"}
+{"time":"2026-05-30T19:41:30.755+03:00","level":"WARNING","name":"src.scraper.browser","message":"Restarting browser …","env":"production"}
+{"time":"2026-05-30T19:41:33.149+03:00","level":"INFO","name":"src.scraper.browser","message":"Browser stopped","env":"production"}
+{"time":"2026-05-30T19:41:33.154+03:00","level":"WARNING","name":"src.scraper.browser","message":"Browser cleanup error: BrowserContext.close: Target page, context or browser has been closed","env":"production"}
+{"time":"2026-05-30T19:41:33.156+03:00","level":"INFO","name":"src.scraper.browser","message":"Browser stopped","env":"production"}
+{"time":"2026-05-30T19:41:33.196+03:00","level":"INFO","name":"src.database.repository","message":"Supabase client disconnected","env":"production"}
+{"time":"2026-05-30T19:41:33.206+03:00","level":"INFO","name":"src.core.pipeline","message":"ArticlePipeline stopped","env":"production"}
+{"time":"2026-05-30T19:41:33.210+03:00","level":"INFO","name":"src.core.watchdog","message":"Pipeline cancelled — shutting down","env":"production"}
+{"time":"2026-05-30T19:41:33.211+03:00","level":"INFO","name":"src.core.watchdog","message":"Watchdog stopped","env":"production"}
+{"time":"2026-05-30T19:41:33.216+03:00","level":"INFO","name":"src.core.watchdog","message":"Shutdown requested","env":"production"}
+{"time":"2026-05-30T19:41:33.217+03:00","level":"INFO","name":"__main__","message":"Shutdown complete","env":"production"}

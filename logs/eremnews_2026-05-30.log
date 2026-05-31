@@ -1,0 +1,116 @@
+{"time":"2026-05-30T19:44:07.947+03:00","level":"INFO","name":"src.core.logging","message":"Logging initialised","env":"production"}
+{"time":"2026-05-30T19:44:07.947+03:00","level":"INFO","name":"__main__","message":"Eram News Monitor starting","env":"production"}
+{"time":"2026-05-30T19:44:07.947+03:00","level":"INFO","name":"src.core.watchdog","message":"Watchdog started — monitoring pipeline","env":"production"}
+{"time":"2026-05-30T19:44:07.947+03:00","level":"INFO","name":"src.core.pipeline","message":"Starting ArticlePipeline (Eram News) …","env":"production"}
+{"time":"2026-05-30T19:44:08.315+03:00","level":"INFO","name":"src.database.repository","message":"Supabase client connected","env":"production"}
+{"time":"2026-05-30T19:44:11.005+03:00","level":"WARNING","name":"src.database.cache","message":"Redis unavailable (Error 11001 connecting to redis:6379. getaddrinfo failed.) — falling back to in-process deduplication only","env":"production"}
+{"time":"2026-05-30T19:44:11.236+03:00","level":"INFO","name":"src.telegram.sender","message":"Telegram bot initialised (Eram News)","env":"production"}
+{"time":"2026-05-30T19:44:11.962+03:00","level":"INFO","name":"src.scraper.browser","message":"Browser started (headless=True)","env":"production"}
+{"time":"2026-05-30T19:44:13.116+03:00","level":"INFO","name":"src.database.repository","message":"Loaded 97 existing article hashes from DB","env":"production"}
+{"time":"2026-05-30T19:44:13.230+03:00","level":"INFO","name":"src.scraper.eremnews_engine","message":"Seeded 97 known article URLs into seen set","env":"production"}
+{"time":"2026-05-30T19:44:13.230+03:00","level":"INFO","name":"src.core.pipeline","message":"ArticlePipeline started ✓","env":"production"}
+{"time":"2026-05-30T19:44:13.230+03:00","level":"INFO","name":"src.core.pipeline","message":"Monitoring 1 subcategories with 60s interval","env":"production"}
+{"time":"2026-05-30T19:44:13.230+03:00","level":"INFO","name":"src.scraper.eremnews_engine","message":"Polling Eram News: رياضة","env":"production"}
+{"time":"2026-05-30T19:46:44.563+03:00","level":"WARNING","name":"src.scraper.eremnews_parser","message":"No article cards found for subcategory=رياضة","env":"production"}
+{"time":"2026-05-30T19:46:44.563+03:00","level":"INFO","name":"src.scraper.eremnews_engine","message":"0 new articles in رياضة","env":"production"}
+{"time":"2026-05-30T19:47:44.570+03:00","level":"INFO","name":"src.scraper.eremnews_engine","message":"Polling Eram News: رياضة","env":"production"}
+{"time":"2026-05-30T19:50:15.401+03:00","level":"WARNING","name":"src.scraper.eremnews_parser","message":"No article cards found for subcategory=رياضة","env":"production"}
+{"time":"2026-05-30T19:50:15.403+03:00","level":"INFO","name":"src.scraper.eremnews_engine","message":"0 new articles in رياضة","env":"production"}
+{"time":"2026-05-30T19:51:15.409+03:00","level":"INFO","name":"src.scraper.eremnews_engine","message":"Polling Eram News: رياضة","env":"production"}
+{"time":"2026-05-30T19:53:46.057+03:00","level":"WARNING","name":"src.scraper.eremnews_parser","message":"No article cards found for subcategory=رياضة","env":"production"}
+{"time":"2026-05-30T19:53:46.059+03:00","level":"INFO","name":"src.scraper.eremnews_engine","message":"0 new articles in رياضة","env":"production"}
+{"time":"2026-05-30T19:54:46.061+03:00","level":"INFO","name":"src.scraper.eremnews_engine","message":"Polling Eram News: رياضة","env":"production"}
+{"time":"2026-05-30T19:55:29.760+03:00","level":"WARNING","name":"src.scraper.eremnews_engine","message":"Error loading https://www.eremnews.com/sports (attempt 1): Page.wait_for_selector: Target page, context or browser has been closed
+Call log:
+  - waiting for locator("article.td_module_wrap")
+","env":"production"}
+{"time":"2026-05-30T19:55:29.766+03:00","level":"WARNING","name":"src.scraper.browser","message":"Restarting browser …","env":"production"}
+{"time":"2026-05-30T19:55:31.599+03:00","level":"INFO","name":"src.scraper.browser","message":"Browser stopped","env":"production"}
+{"time":"2026-05-30T19:55:31.599+03:00","level":"WARNING","name":"src.scraper.browser","message":"Browser cleanup error: BrowserContext.close: Target page, context or browser has been closed","env":"production"}
+{"time":"2026-05-30T19:55:31.599+03:00","level":"INFO","name":"src.scraper.browser","message":"Browser stopped","env":"production"}
+{"time":"2026-05-30T19:55:31.614+03:00","level":"INFO","name":"src.database.repository","message":"Supabase client disconnected","env":"production"}
+{"time":"2026-05-30T19:55:31.621+03:00","level":"INFO","name":"src.core.pipeline","message":"ArticlePipeline stopped","env":"production"}
+{"time":"2026-05-30T19:55:31.621+03:00","level":"INFO","name":"src.core.watchdog","message":"Pipeline cancelled — shutting down","env":"production"}
+{"time":"2026-05-30T19:55:31.621+03:00","level":"INFO","name":"src.core.watchdog","message":"Watchdog stopped","env":"production"}
+{"time":"2026-05-30T19:55:31.621+03:00","level":"INFO","name":"src.core.watchdog","message":"Shutdown requested","env":"production"}
+{"time":"2026-05-30T19:55:31.621+03:00","level":"INFO","name":"__main__","message":"Shutdown complete","env":"production"}
+{"time":"2026-05-30T20:04:50.161+03:00","level":"INFO","name":"src.core.logging","message":"Logging initialised","env":"production"}
+{"time":"2026-05-30T20:04:50.161+03:00","level":"INFO","name":"__main__","message":"Eram News Monitor starting","env":"production"}
+{"time":"2026-05-30T20:04:50.161+03:00","level":"INFO","name":"src.core.watchdog","message":"Watchdog started — monitoring pipeline","env":"production"}
+{"time":"2026-05-30T20:04:50.161+03:00","level":"INFO","name":"src.core.pipeline","message":"Starting ArticlePipeline (Eram News) …","env":"production"}
+{"time":"2026-05-30T20:04:50.367+03:00","level":"INFO","name":"src.database.repository","message":"Supabase client connected","env":"production"}
+{"time":"2026-05-30T20:04:53.037+03:00","level":"WARNING","name":"src.database.cache","message":"Redis unavailable (Error 11001 connecting to redis:6379. getaddrinfo failed.) — falling back to in-process deduplication only","env":"production"}
+{"time":"2026-05-30T20:04:53.165+03:00","level":"INFO","name":"src.telegram.sender","message":"Telegram bot initialised (Eram News)","env":"production"}
+{"time":"2026-05-30T20:04:53.659+03:00","level":"INFO","name":"src.scraper.browser","message":"Browser started (headless=True)","env":"production"}
+{"time":"2026-05-30T20:04:54.347+03:00","level":"INFO","name":"src.database.repository","message":"Loaded 98 existing article hashes from DB","env":"production"}
+{"time":"2026-05-30T20:04:54.443+03:00","level":"INFO","name":"src.scraper.eremnews_engine","message":"Seeded 98 known article URLs into seen set","env":"production"}
+{"time":"2026-05-30T20:04:54.449+03:00","level":"INFO","name":"src.core.pipeline","message":"ArticlePipeline started ✓","env":"production"}
+{"time":"2026-05-30T20:04:54.449+03:00","level":"INFO","name":"src.core.pipeline","message":"Monitoring 1 subcategories with 60s interval","env":"production"}
+{"time":"2026-05-30T20:04:54.449+03:00","level":"INFO","name":"src.scraper.eremnews_engine","message":"Polling Eram News: رياضة","env":"production"}
+{"time":"2026-05-30T20:07:25.734+03:00","level":"INFO","name":"src.scraper.eremnews_engine","message":"13 new articles in رياضة","env":"production"}
+{"time":"2026-05-30T20:07:47.863+03:00","level":"WARNING","name":"src.classifier.engine","message":"Low-confidence classification: NewsClassification.GLOBAL (0.40)","env":"production"}
+{"time":"2026-05-30T20:07:48.080+03:00","level":"INFO","name":"src.database.repository","message":"Article saved: أول عرض أوروبي يصل سلوت بعد إقالته من تدريب ليفربول","env":"production"}
+{"time":"2026-05-30T20:07:52.691+03:00","level":"INFO","name":"src.telegram.sender","message":"Telegram photo sent: أول عرض أوروبي يصل سلوت بعد إقالته من تدريب ليفربول","env":"production"}
+{"time":"2026-05-30T20:07:52.794+03:00","level":"INFO","name":"src.core.pipeline","message":"Article pipeline complete","env":"production"}
+{"time":"2026-05-30T20:07:52.896+03:00","level":"WARNING","name":"src.classifier.engine","message":"Low-confidence classification: NewsClassification.GLOBAL (0.40)","env":"production"}
+{"time":"2026-05-30T20:07:53.161+03:00","level":"INFO","name":"src.database.repository","message":"Article saved: أول تحرك من ليفربول للتعاقد مع إيراولا","env":"production"}
+{"time":"2026-05-30T20:07:53.943+03:00","level":"INFO","name":"src.telegram.sender","message":"Telegram photo sent: أول تحرك من ليفربول للتعاقد مع إيراولا","env":"production"}
+{"time":"2026-05-30T20:07:54.039+03:00","level":"INFO","name":"src.core.pipeline","message":"Article pipeline complete","env":"production"}
+{"time":"2026-05-30T20:07:54.133+03:00","level":"WARNING","name":"src.classifier.engine","message":"Low-confidence classification: NewsClassification.GLOBAL (0.40)","env":"production"}
+{"time":"2026-05-30T20:07:54.333+03:00","level":"INFO","name":"src.database.repository","message":"Article saved: الزمالك يحدد السعر النهائي لبيع حسام عبد المجيد","env":"production"}
+{"time":"2026-05-30T20:07:56.708+03:00","level":"INFO","name":"src.telegram.sender","message":"Telegram photo sent: الزمالك يحدد السعر النهائي لبيع حسام عبد المجيد","env":"production"}
+{"time":"2026-05-30T20:07:56.806+03:00","level":"INFO","name":"src.core.pipeline","message":"Article pipeline complete","env":"production"}
+{"time":"2026-05-30T20:07:56.902+03:00","level":"WARNING","name":"src.classifier.engine","message":"Low-confidence classification: NewsClassification.GLOBAL (0.40)","env":"production"}
+{"time":"2026-05-30T20:07:57.114+03:00","level":"INFO","name":"src.database.repository","message":"Article saved: محمد علي بن رمضان يصدم الأهلي المصري","env":"production"}
+{"time":"2026-05-30T20:07:59.083+03:00","level":"INFO","name":"src.telegram.sender","message":"Telegram photo sent: محمد علي بن رمضان يصدم الأهلي المصري","env":"production"}
+{"time":"2026-05-30T20:07:59.191+03:00","level":"INFO","name":"src.core.pipeline","message":"Article pipeline complete","env":"production"}
+{"time":"2026-05-30T20:07:59.287+03:00","level":"WARNING","name":"src.classifier.engine","message":"Low-confidence classification: NewsClassification.GLOBAL (0.40)","env":"production"}
+{"time":"2026-05-30T20:07:59.480+03:00","level":"INFO","name":"src.database.repository","message":"Article saved: سابالينكا تهزم كاساتكينا وتلاقي نعومي أوساكا في ثمن نهائي رو","env":"production"}
+{"time":"2026-05-30T20:08:01.757+03:00","level":"INFO","name":"src.telegram.sender","message":"Telegram photo sent: سابالينكا تهزم كاساتكينا وتلاقي نعومي أوساكا في ثمن نهائي رو","env":"production"}
+{"time":"2026-05-30T20:08:01.859+03:00","level":"INFO","name":"src.core.pipeline","message":"Article pipeline complete","env":"production"}
+{"time":"2026-05-30T20:08:01.964+03:00","level":"WARNING","name":"src.classifier.engine","message":"Low-confidence classification: NewsClassification.GLOBAL (0.40)","env":"production"}
+{"time":"2026-05-30T20:08:02.184+03:00","level":"INFO","name":"src.database.repository","message":"Article saved: اللحظة الحاسمة.. التغريدة التي أطاحت بسلوت خارج ليفربول","env":"production"}
+{"time":"2026-05-30T20:08:04.306+03:00","level":"INFO","name":"src.telegram.sender","message":"Telegram photo sent: اللحظة الحاسمة.. التغريدة التي أطاحت بسلوت خارج ليفربول","env":"production"}
+{"time":"2026-05-30T20:08:04.416+03:00","level":"INFO","name":"src.core.pipeline","message":"Article pipeline complete","env":"production"}
+{"time":"2026-05-30T20:08:04.514+03:00","level":"WARNING","name":"src.classifier.engine","message":"Low-confidence classification: NewsClassification.GLOBAL (0.40)","env":"production"}
+{"time":"2026-05-30T20:08:04.716+03:00","level":"INFO","name":"src.database.repository","message":"Article saved: مباشر.. نهائي دوري أبطال أوروبا بين باريس سان جيرمان وآرسنال","env":"production"}
+{"time":"2026-05-30T20:08:06.574+03:00","level":"INFO","name":"src.telegram.sender","message":"Telegram photo sent: مباشر.. نهائي دوري أبطال أوروبا بين باريس سان جيرمان وآرسنال","env":"production"}
+{"time":"2026-05-30T20:08:06.673+03:00","level":"INFO","name":"src.core.pipeline","message":"Article pipeline complete","env":"production"}
+{"time":"2026-05-30T20:08:06.780+03:00","level":"WARNING","name":"src.classifier.engine","message":"Low-confidence classification: NewsClassification.GLOBAL (0.40)","env":"production"}
+{"time":"2026-05-30T20:08:06.977+03:00","level":"INFO","name":"src.database.repository","message":"Article saved: بعد رحيل سلوت.. هل يعود محمد صلاح إلى ليفربول؟","env":"production"}
+{"time":"2026-05-30T20:08:09.054+03:00","level":"INFO","name":"src.telegram.sender","message":"Telegram photo sent: بعد رحيل سلوت.. هل يعود محمد صلاح إلى ليفربول؟","env":"production"}
+{"time":"2026-05-30T20:08:09.160+03:00","level":"INFO","name":"src.core.pipeline","message":"Article pipeline complete","env":"production"}
+{"time":"2026-05-30T20:08:09.259+03:00","level":"WARNING","name":"src.classifier.engine","message":"Low-confidence classification: NewsClassification.GLOBAL (0.40)","env":"production"}
+{"time":"2026-05-30T20:08:09.533+03:00","level":"INFO","name":"src.database.repository","message":"Article saved: الموعد والقنوات الناقلة لنهائي كأس تونس بين ترجي جرجيس والتر","env":"production"}
+{"time":"2026-05-30T20:08:11.710+03:00","level":"INFO","name":"src.telegram.sender","message":"Telegram photo sent: الموعد والقنوات الناقلة لنهائي كأس تونس بين ترجي جرجيس والتر","env":"production"}
+{"time":"2026-05-30T20:08:11.809+03:00","level":"INFO","name":"src.core.pipeline","message":"Article pipeline complete","env":"production"}
+{"time":"2026-05-30T20:08:11.903+03:00","level":"WARNING","name":"src.classifier.engine","message":"Low-confidence classification: NewsClassification.GLOBAL (0.40)","env":"production"}
+{"time":"2026-05-30T20:08:12.110+03:00","level":"INFO","name":"src.database.repository","message":"Article saved: رونالدينيو وزلاتان أوّلا.. قائمة ضيوف سان جيرمان في نهائي دو","env":"production"}
+{"time":"2026-05-30T20:08:14.110+03:00","level":"INFO","name":"src.telegram.sender","message":"Telegram photo sent: رونالدينيو وزلاتان أوّلا.. قائمة ضيوف سان جيرمان في نهائي دو","env":"production"}
+{"time":"2026-05-30T20:08:14.210+03:00","level":"INFO","name":"src.core.pipeline","message":"Article pipeline complete","env":"production"}
+{"time":"2026-05-30T20:08:14.304+03:00","level":"WARNING","name":"src.classifier.engine","message":"Low-confidence classification: NewsClassification.GLOBAL (0.40)","env":"production"}
+{"time":"2026-05-30T20:08:14.497+03:00","level":"INFO","name":"src.database.repository","message":"Article saved: لقب وحيد ونكسات بالجملة.. ماذا حقق أرني سلوت في تجربته مع لي","env":"production"}
+{"time":"2026-05-30T20:08:16.581+03:00","level":"INFO","name":"src.telegram.sender","message":"Telegram photo sent: لقب وحيد ونكسات بالجملة.. ماذا حقق أرني سلوت في تجربته مع لي","env":"production"}
+{"time":"2026-05-30T20:08:16.679+03:00","level":"INFO","name":"src.core.pipeline","message":"Article pipeline complete","env":"production"}
+{"time":"2026-05-30T20:08:16.773+03:00","level":"WARNING","name":"src.classifier.engine","message":"Low-confidence classification: NewsClassification.GLOBAL (0.40)","env":"production"}
+{"time":"2026-05-30T20:08:16.976+03:00","level":"INFO","name":"src.database.repository","message":"Article saved: 3 ضربات قاضية.. كيف أسقط محمد صلاح سلوت في "الوقت القاتل"؟","env":"production"}
+{"time":"2026-05-30T20:08:19.438+03:00","level":"INFO","name":"src.telegram.sender","message":"Telegram photo sent: 3 ضربات قاضية.. كيف أسقط محمد صلاح سلوت في "الوقت القاتل"؟","env":"production"}
+{"time":"2026-05-30T20:08:19.542+03:00","level":"INFO","name":"src.core.pipeline","message":"Article pipeline complete","env":"production"}
+{"time":"2026-05-30T20:08:19.642+03:00","level":"WARNING","name":"src.classifier.engine","message":"Low-confidence classification: NewsClassification.GLOBAL (0.40)","env":"production"}
+{"time":"2026-05-30T20:08:19.835+03:00","level":"INFO","name":"src.database.repository","message":"Article saved: أول تعليق من سلوت بعد رحيله عن تدريب ليفربول","env":"production"}
+{"time":"2026-05-30T20:08:22.320+03:00","level":"INFO","name":"src.telegram.sender","message":"Telegram photo sent: أول تعليق من سلوت بعد رحيله عن تدريب ليفربول","env":"production"}
+{"time":"2026-05-30T20:08:22.420+03:00","level":"INFO","name":"src.core.pipeline","message":"Article pipeline complete","env":"production"}
+{"time":"2026-05-30T20:09:22.427+03:00","level":"INFO","name":"src.scraper.eremnews_engine","message":"Polling Eram News: رياضة","env":"production"}
+{"time":"2026-05-30T20:09:51.576+03:00","level":"WARNING","name":"src.scraper.eremnews_engine","message":"Error loading https://www.eremnews.com/sports (attempt 1): Page.wait_for_selector: Target page, context or browser has been closed
+Call log:
+  - waiting for locator("article.post")
+","env":"production"}
+{"time":"2026-05-30T20:09:51.577+03:00","level":"WARNING","name":"src.scraper.browser","message":"Restarting browser …","env":"production"}
+{"time":"2026-05-30T20:09:51.599+03:00","level":"WARNING","name":"src.scraper.browser","message":"Browser cleanup error: BrowserContext.close: Target page, context or browser has been closed","env":"production"}
+{"time":"2026-05-30T20:09:51.600+03:00","level":"INFO","name":"src.scraper.browser","message":"Browser stopped","env":"production"}
+{"time":"2026-05-30T20:09:51.860+03:00","level":"INFO","name":"src.database.repository","message":"Supabase client disconnected","env":"production"}
+{"time":"2026-05-30T20:09:51.861+03:00","level":"INFO","name":"src.core.pipeline","message":"ArticlePipeline stopped","env":"production"}
+{"time":"2026-05-30T20:09:51.862+03:00","level":"INFO","name":"src.core.watchdog","message":"Pipeline cancelled — shutting down","env":"production"}
+{"time":"2026-05-30T20:09:51.862+03:00","level":"INFO","name":"src.core.watchdog","message":"Watchdog stopped","env":"production"}
+{"time":"2026-05-30T20:09:51.863+03:00","level":"INFO","name":"src.core.watchdog","message":"Shutdown requested","env":"production"}
+{"time":"2026-05-30T20:09:51.863+03:00","level":"INFO","name":"__main__","message":"Shutdown complete","env":"production"}

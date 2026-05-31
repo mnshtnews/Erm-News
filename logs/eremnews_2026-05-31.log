@@ -1,0 +1,121 @@
+{"time":"2026-05-31T04:50:42.021+03:00","level":"INFO","name":"src.core.logging","message":"Logging initialised","env":"production"}
+{"time":"2026-05-31T04:50:42.021+03:00","level":"INFO","name":"__main__","message":"Eram News Monitor starting","env":"production"}
+{"time":"2026-05-31T04:50:42.022+03:00","level":"INFO","name":"src.core.watchdog","message":"Watchdog started — monitoring pipeline","env":"production"}
+{"time":"2026-05-31T04:50:42.022+03:00","level":"INFO","name":"src.core.pipeline","message":"Starting ArticlePipeline (Eram News) …","env":"production"}
+{"time":"2026-05-31T04:50:42.290+03:00","level":"INFO","name":"src.database.repository","message":"Supabase client connected","env":"production"}
+{"time":"2026-05-31T04:50:44.992+03:00","level":"WARNING","name":"src.database.cache","message":"Redis unavailable (Error 11001 connecting to redis:6379. getaddrinfo failed.) — falling back to in-process deduplication only","env":"production"}
+{"time":"2026-05-31T04:50:45.130+03:00","level":"INFO","name":"src.telegram.sender","message":"Telegram bot initialised (Eram News)","env":"production"}
+{"time":"2026-05-31T04:50:45.829+03:00","level":"INFO","name":"src.scraper.browser","message":"Browser started (headless=True)","env":"production"}
+{"time":"2026-05-31T04:50:46.863+03:00","level":"INFO","name":"src.database.repository","message":"Loaded 113 existing article hashes from DB","env":"production"}
+{"time":"2026-05-31T04:50:46.974+03:00","level":"INFO","name":"src.scraper.eremnews_engine","message":"Seeded 113 known article URLs into seen set","env":"production"}
+{"time":"2026-05-31T04:50:46.975+03:00","level":"INFO","name":"src.core.pipeline","message":"ArticlePipeline started ✓","env":"production"}
+{"time":"2026-05-31T04:50:46.975+03:00","level":"INFO","name":"src.core.pipeline","message":"Monitoring 1 subcategories with 60s interval","env":"production"}
+{"time":"2026-05-31T04:50:46.975+03:00","level":"INFO","name":"src.scraper.eremnews_engine","message":"Polling Eram News: رياضة","env":"production"}
+{"time":"2026-05-31T04:53:21.211+03:00","level":"INFO","name":"src.scraper.eremnews_engine","message":"13 new articles in رياضة","env":"production"}
+{"time":"2026-05-31T04:53:43.062+03:00","level":"WARNING","name":"src.classifier.engine","message":"Low-confidence classification: NewsClassification.GLOBAL (0.40)","env":"production"}
+{"time":"2026-05-31T04:53:43.341+03:00","level":"INFO","name":"src.database.repository","message":"Article saved: أخفت وجهها تماما.. الظهور الوحيد لزوجة عثمان ديمبلي في نهائي","env":"production"}
+{"time":"2026-05-31T04:53:44.877+03:00","level":"INFO","name":"src.telegram.sender","message":"Telegram photo sent: أخفت وجهها تماما.. الظهور الوحيد لزوجة عثمان ديمبلي في نهائي","env":"production"}
+{"time":"2026-05-31T04:53:44.990+03:00","level":"INFO","name":"src.core.pipeline","message":"Article pipeline complete","env":"production"}
+{"time":"2026-05-31T04:53:45.084+03:00","level":"WARNING","name":"src.classifier.engine","message":"Low-confidence classification: NewsClassification.GLOBAL (0.40)","env":"production"}
+{"time":"2026-05-31T04:53:45.274+03:00","level":"INFO","name":"src.database.repository","message":"Article saved: فراس البريكان يهدر هدفاً محققاً للمنتخب السعودي أمام الإكواد","env":"production"}
+{"time":"2026-05-31T04:53:46.531+03:00","level":"INFO","name":"src.telegram.sender","message":"Telegram photo sent: فراس البريكان يهدر هدفاً محققاً للمنتخب السعودي أمام الإكواد","env":"production"}
+{"time":"2026-05-31T04:53:46.628+03:00","level":"INFO","name":"src.core.pipeline","message":"Article pipeline complete","env":"production"}
+{"time":"2026-05-31T04:53:46.727+03:00","level":"WARNING","name":"src.classifier.engine","message":"Low-confidence classification: NewsClassification.GLOBAL (0.40)","env":"production"}
+{"time":"2026-05-31T04:53:46.918+03:00","level":"INFO","name":"src.database.repository","message":"Article saved: تصريحات نارية.. ناصر الخليفي "يصفع" مبابي وميسي","env":"production"}
+{"time":"2026-05-31T04:53:49.759+03:00","level":"INFO","name":"src.telegram.sender","message":"Telegram photo sent: تصريحات نارية.. ناصر الخليفي "يصفع" مبابي وميسي","env":"production"}
+{"time":"2026-05-31T04:53:49.859+03:00","level":"INFO","name":"src.core.pipeline","message":"Article pipeline complete","env":"production"}
+{"time":"2026-05-31T04:53:49.959+03:00","level":"WARNING","name":"src.classifier.engine","message":"Low-confidence classification: NewsClassification.GLOBAL (0.40)","env":"production"}
+{"time":"2026-05-31T04:53:50.153+03:00","level":"INFO","name":"src.database.repository","message":"Article saved: الأردن ضد سويسرا ونهائي كأس تونس.. مواعيد مباريات اليوم والق","env":"production"}
+{"time":"2026-05-31T04:53:51.524+03:00","level":"INFO","name":"src.telegram.sender","message":"Telegram photo sent: الأردن ضد سويسرا ونهائي كأس تونس.. مواعيد مباريات اليوم والق","env":"production"}
+{"time":"2026-05-31T04:53:51.621+03:00","level":"INFO","name":"src.core.pipeline","message":"Article pipeline complete","env":"production"}
+{"time":"2026-05-31T04:53:51.712+03:00","level":"WARNING","name":"src.classifier.engine","message":"Low-confidence classification: NewsClassification.GLOBAL (0.40)","env":"production"}
+{"time":"2026-05-31T04:53:51.900+03:00","level":"INFO","name":"src.database.repository","message":"Article saved: الأغرب على الإطلاق.. رد فعل ديكلان رايس بعد خسارة دوري أبطال","env":"production"}
+{"time":"2026-05-31T04:53:54.475+03:00","level":"INFO","name":"src.telegram.sender","message":"Telegram photo sent: الأغرب على الإطلاق.. رد فعل ديكلان رايس بعد خسارة دوري أبطال","env":"production"}
+{"time":"2026-05-31T04:53:54.576+03:00","level":"INFO","name":"src.core.pipeline","message":"Article pipeline complete","env":"production"}
+{"time":"2026-05-31T04:53:54.670+03:00","level":"WARNING","name":"src.classifier.engine","message":"Low-confidence classification: NewsClassification.GLOBAL (0.40)","env":"production"}
+{"time":"2026-05-31T04:53:54.873+03:00","level":"INFO","name":"src.database.repository","message":"Article saved: رد رسمي حول تعيين مدرب محلي للمنتخب العراقي","env":"production"}
+{"time":"2026-05-31T04:53:56.516+03:00","level":"INFO","name":"src.telegram.sender","message":"Telegram photo sent: رد رسمي حول تعيين مدرب محلي للمنتخب العراقي","env":"production"}
+{"time":"2026-05-31T04:53:56.613+03:00","level":"INFO","name":"src.core.pipeline","message":"Article pipeline complete","env":"production"}
+{"time":"2026-05-31T04:53:56.715+03:00","level":"WARNING","name":"src.classifier.engine","message":"Low-confidence classification: NewsClassification.GLOBAL (0.40)","env":"production"}
+{"time":"2026-05-31T04:53:56.906+03:00","level":"INFO","name":"src.database.repository","message":"Article saved: رافائيل لياو يطلب الرحيل عن ميلان الإيطالي (فيديو)","env":"production"}
+{"time":"2026-05-31T04:53:59.657+03:00","level":"INFO","name":"src.telegram.sender","message":"Telegram photo sent: رافائيل لياو يطلب الرحيل عن ميلان الإيطالي (فيديو)","env":"production"}
+{"time":"2026-05-31T04:53:59.752+03:00","level":"INFO","name":"src.core.pipeline","message":"Article pipeline complete","env":"production"}
+{"time":"2026-05-31T04:53:59.847+03:00","level":"WARNING","name":"src.classifier.engine","message":"Low-confidence classification: NewsClassification.GLOBAL (0.40)","env":"production"}
+{"time":"2026-05-31T04:54:00.042+03:00","level":"INFO","name":"src.database.repository","message":"Article saved: والدة أشرف حكيمي تحتفل على أرض الملعب بلقب دوري أبطال أوروبا","env":"production"}
+{"time":"2026-05-31T04:54:02.027+03:00","level":"INFO","name":"src.telegram.sender","message":"Telegram photo sent: والدة أشرف حكيمي تحتفل على أرض الملعب بلقب دوري أبطال أوروبا","env":"production"}
+{"time":"2026-05-31T04:54:02.123+03:00","level":"INFO","name":"src.core.pipeline","message":"Article pipeline complete","env":"production"}
+{"time":"2026-05-31T04:54:02.218+03:00","level":"WARNING","name":"src.classifier.engine","message":"Low-confidence classification: NewsClassification.GLOBAL (0.40)","env":"production"}
+{"time":"2026-05-31T04:54:02.408+03:00","level":"INFO","name":"src.database.repository","message":"Article saved: قرار رسمي من الاتحاد السعودي بشأن مستقبل دومينغوس","env":"production"}
+{"time":"2026-05-31T04:54:04.381+03:00","level":"INFO","name":"src.telegram.sender","message":"Telegram photo sent: قرار رسمي من الاتحاد السعودي بشأن مستقبل دومينغوس","env":"production"}
+{"time":"2026-05-31T04:54:04.476+03:00","level":"INFO","name":"src.core.pipeline","message":"Article pipeline complete","env":"production"}
+{"time":"2026-05-31T04:54:04.569+03:00","level":"WARNING","name":"src.classifier.engine","message":"Low-confidence classification: NewsClassification.GLOBAL (0.40)","env":"production"}
+{"time":"2026-05-31T04:54:04.761+03:00","level":"INFO","name":"src.database.repository","message":"Article saved: قبل كأس العالم.. اتحاد الكرة الجزائري يكافئ بيتكوفيتش","env":"production"}
+{"time":"2026-05-31T04:54:06.561+03:00","level":"INFO","name":"src.telegram.sender","message":"Telegram photo sent: قبل كأس العالم.. اتحاد الكرة الجزائري يكافئ بيتكوفيتش","env":"production"}
+{"time":"2026-05-31T04:54:06.658+03:00","level":"INFO","name":"src.core.pipeline","message":"Article pipeline complete","env":"production"}
+{"time":"2026-05-31T04:54:06.751+03:00","level":"WARNING","name":"src.classifier.engine","message":"Low-confidence classification: NewsClassification.GLOBAL (0.40)","env":"production"}
+{"time":"2026-05-31T04:54:06.946+03:00","level":"INFO","name":"src.database.repository","message":"Article saved: سرُّ غياب عمر مرموش عن رحلة منتخب مصر إلى الولايات المتحدة","env":"production"}
+{"time":"2026-05-31T04:54:09.649+03:00","level":"INFO","name":"src.telegram.sender","message":"Telegram photo sent: سرُّ غياب عمر مرموش عن رحلة منتخب مصر إلى الولايات المتحدة","env":"production"}
+{"time":"2026-05-31T04:54:09.751+03:00","level":"INFO","name":"src.core.pipeline","message":"Article pipeline complete","env":"production"}
+{"time":"2026-05-31T04:54:09.844+03:00","level":"WARNING","name":"src.classifier.engine","message":"Low-confidence classification: NewsClassification.GLOBAL (0.40)","env":"production"}
+{"time":"2026-05-31T04:54:10.035+03:00","level":"INFO","name":"src.database.repository","message":"Article saved: ترتيب الدوري المغربي بعد تعادل الفتح والجيش الملكي","env":"production"}
+{"time":"2026-05-31T04:54:11.821+03:00","level":"INFO","name":"src.telegram.sender","message":"Telegram photo sent: ترتيب الدوري المغربي بعد تعادل الفتح والجيش الملكي","env":"production"}
+{"time":"2026-05-31T04:54:11.919+03:00","level":"INFO","name":"src.core.pipeline","message":"Article pipeline complete","env":"production"}
+{"time":"2026-05-31T04:54:12.013+03:00","level":"WARNING","name":"src.classifier.engine","message":"Low-confidence classification: NewsClassification.GLOBAL (0.40)","env":"production"}
+{"time":"2026-05-31T04:54:12.198+03:00","level":"INFO","name":"src.database.repository","message":"Article saved: لماذا انتفض باريس سان جيرمان بعد رحيل ميسي ومبابي؟","env":"production"}
+{"time":"2026-05-31T04:54:14.601+03:00","level":"INFO","name":"src.telegram.sender","message":"Telegram photo sent: لماذا انتفض باريس سان جيرمان بعد رحيل ميسي ومبابي؟","env":"production"}
+{"time":"2026-05-31T04:54:14.699+03:00","level":"INFO","name":"src.core.pipeline","message":"Article pipeline complete","env":"production"}
+{"time":"2026-05-31T04:55:14.722+03:00","level":"INFO","name":"src.scraper.eremnews_engine","message":"Polling Eram News: رياضة","env":"production"}
+{"time":"2026-05-31T04:57:45.278+03:00","level":"WARNING","name":"src.scraper.eremnews_parser","message":"Sports grid not found for subcategory=رياضة. Tags present: ['a', 'body', 'circle', 'code', 'div', 'h1', 'h2', 'head', 'html', 'img', 'li', 'meta', 'noscript', 'ol', 'p', 'path', 'script', 'span', 'style', 'svg', 'title']","env":"production"}
+{"time":"2026-05-31T04:57:45.279+03:00","level":"INFO","name":"src.scraper.eremnews_engine","message":"0 new articles in رياضة","env":"production"}
+{"time":"2026-05-31T04:58:45.286+03:00","level":"INFO","name":"src.scraper.eremnews_engine","message":"Polling Eram News: رياضة","env":"production"}
+{"time":"2026-05-31T05:01:15.879+03:00","level":"WARNING","name":"src.scraper.eremnews_parser","message":"Sports grid not found for subcategory=رياضة. Tags present: ['a', 'body', 'circle', 'code', 'div', 'h1', 'h2', 'head', 'html', 'img', 'li', 'meta', 'noscript', 'ol', 'p', 'path', 'script', 'span', 'style', 'svg', 'title']","env":"production"}
+{"time":"2026-05-31T05:01:15.885+03:00","level":"INFO","name":"src.scraper.eremnews_engine","message":"0 new articles in رياضة","env":"production"}
+{"time":"2026-05-31T05:02:13.465+03:00","level":"WARNING","name":"src.scraper.browser","message":"Browser cleanup error: BrowserContext.close: Target page, context or browser has been closed","env":"production"}
+{"time":"2026-05-31T05:02:13.466+03:00","level":"INFO","name":"src.scraper.browser","message":"Browser stopped","env":"production"}
+{"time":"2026-05-31T05:02:13.753+03:00","level":"INFO","name":"src.database.repository","message":"Supabase client disconnected","env":"production"}
+{"time":"2026-05-31T05:02:13.761+03:00","level":"INFO","name":"src.core.pipeline","message":"ArticlePipeline stopped","env":"production"}
+{"time":"2026-05-31T05:02:13.761+03:00","level":"INFO","name":"src.core.watchdog","message":"Pipeline cancelled — shutting down","env":"production"}
+{"time":"2026-05-31T05:02:13.762+03:00","level":"INFO","name":"src.core.watchdog","message":"Watchdog stopped","env":"production"}
+{"time":"2026-05-31T05:02:13.763+03:00","level":"INFO","name":"src.core.watchdog","message":"Shutdown requested","env":"production"}
+{"time":"2026-05-31T05:02:13.763+03:00","level":"INFO","name":"__main__","message":"Shutdown complete","env":"production"}
+{"time":"2026-05-31T05:03:40.021+03:00","level":"INFO","name":"src.core.logging","message":"Logging initialised","env":"production"}
+{"time":"2026-05-31T05:03:40.022+03:00","level":"INFO","name":"__main__","message":"Eram News Monitor starting","env":"production"}
+{"time":"2026-05-31T05:03:40.023+03:00","level":"INFO","name":"src.core.watchdog","message":"Watchdog started — monitoring pipeline","env":"production"}
+{"time":"2026-05-31T05:03:40.023+03:00","level":"INFO","name":"src.core.pipeline","message":"Starting ArticlePipeline (Eram News) …","env":"production"}
+{"time":"2026-05-31T05:03:40.281+03:00","level":"INFO","name":"src.database.repository","message":"Supabase client connected","env":"production"}
+{"time":"2026-05-31T05:03:42.995+03:00","level":"WARNING","name":"src.database.cache","message":"Redis unavailable (Error 11001 connecting to redis:6379. getaddrinfo failed.) — falling back to in-process deduplication only","env":"production"}
+{"time":"2026-05-31T05:03:43.194+03:00","level":"INFO","name":"src.telegram.sender","message":"Telegram bot initialised (Eram News)","env":"production"}
+{"time":"2026-05-31T05:03:43.781+03:00","level":"INFO","name":"src.scraper.browser","message":"Browser started (headless=True)","env":"production"}
+{"time":"2026-05-31T05:03:43.982+03:00","level":"INFO","name":"src.scraper.browser","message":"Warming up browser — visiting homepage …","env":"production"}
+{"time":"2026-05-31T05:03:50.568+03:00","level":"INFO","name":"src.scraper.browser","message":"Browser warmup complete","env":"production"}
+{"time":"2026-05-31T05:03:51.491+03:00","level":"INFO","name":"src.database.repository","message":"Loaded 100 existing article hashes from DB","env":"production"}
+{"time":"2026-05-31T05:03:51.598+03:00","level":"INFO","name":"src.scraper.eremnews_engine","message":"Seeded 100 known article URLs into seen set","env":"production"}
+{"time":"2026-05-31T05:03:51.598+03:00","level":"INFO","name":"src.core.pipeline","message":"ArticlePipeline started ✓","env":"production"}
+{"time":"2026-05-31T05:03:51.598+03:00","level":"INFO","name":"src.core.pipeline","message":"Monitoring 1 subcategories with 60s interval","env":"production"}
+{"time":"2026-05-31T05:03:51.599+03:00","level":"INFO","name":"src.scraper.eremnews_engine","message":"Polling Eram News: رياضة","env":"production"}
+{"time":"2026-05-31T05:03:56.456+03:00","level":"WARNING","name":"src.scraper.eremnews_parser","message":"Sports grid not found for subcategory=رياضة. Tags present: ['a', 'body', 'circle', 'code', 'div', 'h1', 'h2', 'head', 'html', 'img', 'li', 'meta', 'noscript', 'ol', 'p', 'path', 'script', 'span', 'style', 'svg', 'title']","env":"production"}
+{"time":"2026-05-31T05:03:56.456+03:00","level":"INFO","name":"src.scraper.eremnews_engine","message":"0 new articles in رياضة","env":"production"}
+{"time":"2026-05-31T05:04:56.461+03:00","level":"INFO","name":"src.scraper.eremnews_engine","message":"Polling Eram News: رياضة","env":"production"}
+{"time":"2026-05-31T05:05:00.951+03:00","level":"WARNING","name":"src.scraper.eremnews_parser","message":"Sports grid not found for subcategory=رياضة. Tags present: ['a', 'body', 'circle', 'code', 'div', 'h1', 'h2', 'head', 'html', 'img', 'li', 'meta', 'noscript', 'ol', 'p', 'path', 'script', 'span', 'style', 'svg', 'title']","env":"production"}
+{"time":"2026-05-31T05:05:00.951+03:00","level":"INFO","name":"src.scraper.eremnews_engine","message":"0 new articles in رياضة","env":"production"}
+{"time":"2026-05-31T05:06:00.964+03:00","level":"INFO","name":"src.scraper.eremnews_engine","message":"Polling Eram News: رياضة","env":"production"}
+{"time":"2026-05-31T05:06:05.114+03:00","level":"WARNING","name":"src.scraper.eremnews_parser","message":"Sports grid not found for subcategory=رياضة. Tags present: ['a', 'body', 'circle', 'code', 'div', 'h1', 'h2', 'head', 'html', 'img', 'li', 'meta', 'noscript', 'ol', 'p', 'path', 'script', 'span', 'style', 'svg', 'title']","env":"production"}
+{"time":"2026-05-31T05:06:05.115+03:00","level":"INFO","name":"src.scraper.eremnews_engine","message":"0 new articles in رياضة","env":"production"}
+{"time":"2026-05-31T05:07:05.129+03:00","level":"INFO","name":"src.scraper.eremnews_engine","message":"Polling Eram News: رياضة","env":"production"}
+{"time":"2026-05-31T05:07:10.348+03:00","level":"WARNING","name":"src.scraper.eremnews_parser","message":"Sports grid not found for subcategory=رياضة. Tags present: ['a', 'body', 'circle', 'code', 'div', 'h1', 'h2', 'head', 'html', 'img', 'li', 'meta', 'noscript', 'ol', 'p', 'path', 'script', 'span', 'style', 'svg', 'title']","env":"production"}
+{"time":"2026-05-31T05:07:10.349+03:00","level":"INFO","name":"src.scraper.eremnews_engine","message":"0 new articles in رياضة","env":"production"}
+{"time":"2026-05-31T05:08:10.360+03:00","level":"INFO","name":"src.scraper.eremnews_engine","message":"Polling Eram News: رياضة","env":"production"}
+{"time":"2026-05-31T05:08:13.886+03:00","level":"WARNING","name":"src.scraper.eremnews_parser","message":"Sports grid not found for subcategory=رياضة. Tags present: ['a', 'body', 'circle', 'code', 'div', 'h1', 'h2', 'head', 'html', 'img', 'li', 'meta', 'noscript', 'ol', 'p', 'path', 'script', 'span', 'style', 'svg', 'title']","env":"production"}
+{"time":"2026-05-31T05:08:13.887+03:00","level":"INFO","name":"src.scraper.eremnews_engine","message":"0 new articles in رياضة","env":"production"}
+{"time":"2026-05-31T05:09:13.897+03:00","level":"INFO","name":"src.scraper.eremnews_engine","message":"Polling Eram News: رياضة","env":"production"}
+{"time":"2026-05-31T05:09:18.442+03:00","level":"WARNING","name":"src.scraper.eremnews_parser","message":"Sports grid not found for subcategory=رياضة. Tags present: ['a', 'body', 'circle', 'code', 'div', 'h1', 'h2', 'head', 'html', 'img', 'li', 'meta', 'noscript', 'ol', 'p', 'path', 'script', 'span', 'style', 'svg', 'title']","env":"production"}
+{"time":"2026-05-31T05:09:18.442+03:00","level":"INFO","name":"src.scraper.eremnews_engine","message":"0 new articles in رياضة","env":"production"}
+{"time":"2026-05-31T05:10:18.455+03:00","level":"INFO","name":"src.scraper.eremnews_engine","message":"Polling Eram News: رياضة","env":"production"}
+{"time":"2026-05-31T05:10:23.022+03:00","level":"WARNING","name":"src.scraper.eremnews_parser","message":"Sports grid not found for subcategory=رياضة. Tags present: ['a', 'body', 'circle', 'code', 'div', 'h1', 'h2', 'head', 'html', 'img', 'li', 'meta', 'noscript', 'ol', 'p', 'path', 'script', 'span', 'style', 'svg', 'title']","env":"production"}
+{"time":"2026-05-31T05:10:23.022+03:00","level":"INFO","name":"src.scraper.eremnews_engine","message":"0 new articles in رياضة","env":"production"}
+{"time":"2026-05-31T05:11:23.026+03:00","level":"INFO","name":"src.scraper.eremnews_engine","message":"Polling Eram News: رياضة","env":"production"}
+{"time":"2026-05-31T05:11:27.255+03:00","level":"WARNING","name":"src.scraper.eremnews_parser","message":"Sports grid not found for subcategory=رياضة. Tags present: ['a', 'body', 'circle', 'code', 'div', 'h1', 'h2', 'head', 'html', 'img', 'li', 'meta', 'noscript', 'ol', 'p', 'path', 'script', 'span', 'style', 'svg', 'title']","env":"production"}
+{"time":"2026-05-31T05:11:27.256+03:00","level":"INFO","name":"src.scraper.eremnews_engine","message":"0 new articles in رياضة","env":"production"}
+{"time":"2026-05-31T05:12:27.259+03:00","level":"INFO","name":"src.scraper.eremnews_engine","message":"Polling Eram News: رياضة","env":"production"}
+{"time":"2026-05-31T05:12:31.664+03:00","level":"WARNING","name":"src.scraper.eremnews_parser","message":"Sports grid not found for subcategory=رياضة. Tags present: ['a', 'body', 'circle', 'code', 'div', 'h1', 'h2', 'head', 'html', 'img', 'li', 'meta', 'noscript', 'ol', 'p', 'path', 'script', 'span', 'style', 'svg', 'title']","env":"production"}
+{"time":"2026-05-31T05:12:31.664+03:00","level":"INFO","name":"src.scraper.eremnews_engine","message":"0 new articles in رياضة","env":"production"}
