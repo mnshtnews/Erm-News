@@ -135,6 +135,25 @@ class ArticleRepository:
             logger.warning(f"exists_by_hash check failed: {exc}")
             return False
 
+    async def is_telegram_sent(self, article_hash: str) -> bool:
+        """Check if Telegram notification was already sent for this article."""
+        try:
+            result = (
+                await self._db()
+                .table(TABLE)
+                .select("telegram_sent")
+                .eq("article_hash", article_hash)
+                .limit(1)
+                .execute()
+            )
+            rows = result.data or []
+            if not rows:
+                return False
+            return bool(rows[0].get("telegram_sent", False))
+        except Exception as exc:
+            logger.warning(f"is_telegram_sent check failed: {exc}")
+            return True  # Assume sent on error to avoid duplicate sends
+
     async def get_all_hashes(self) -> set[str]:
         """
         Return all stored article hashes.
@@ -179,6 +198,19 @@ class ArticleRepository:
         for row in result.data or []:
             hashes.add(row["url"])
         return hashes
+
+    async def get_latest_url(self) -> Optional[str]:
+        """Return the URL of the most recently scraped article, or None."""
+        result = (
+            await self._db()
+            .table(TABLE)
+            .select("url")
+            .order("scraped_at", desc=True)
+            .limit(1)
+            .execute()
+        )
+        rows = result.data or []
+        return rows[0]["url"] if rows else None
 
     async def get_recent(self, limit: int = 20) -> list[dict]:
         """Return the most recently scraped articles."""
