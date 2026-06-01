@@ -27,12 +27,16 @@ from src.scraper.eremnews_parser import parse_article_detail, parse_article_list
 _LISTING_URL      = "https://www.eremnews.com/sports"
 _HOME_URL         = "https://www.eremnews.com"
 
-# Selectors that prove the sports listing has rendered
+# Selectors that prove the sports listing has rendered.
+# We try the most specific first (actual article links), then fall back.
 _CONTENT_READY_SELECTORS = [
-    "h1",
-    "h3",
-    "a[href^='/sports/']",
+    "a[href^='/sports/']:not([href='/sports'])",  # an actual article link
+    "h3",                                          # at least headings loaded
+    "h1",                                          # page header at minimum
 ]
+
+# How long to wait after content is detected for JS to finish rendering grid
+_GRID_SETTLE_SECONDS = 3.0
 
 # Strings present in Cloudflare challenge pages
 _CF_BLOCK_SIGNALS = [
@@ -177,11 +181,12 @@ class EremNewsScraper:
         if wait_for_content:
             for selector in _CONTENT_READY_SELECTORS:
                 try:
-                    await page.wait_for_selector(selector, timeout=20_000, state="attached")
+                    await page.wait_for_selector(selector, timeout=25_000, state="attached")
                     break
                 except PlaywrightTimeoutError:
                     continue
-            await asyncio.sleep(1.5)
+            # Give the Next.js hydration extra time to render the article grid
+            await asyncio.sleep(_GRID_SETTLE_SECONDS)
 
         return await page.content()
 
