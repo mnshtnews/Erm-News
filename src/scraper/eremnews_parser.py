@@ -1,4 +1,3 @@
-
 """
 src/scraper/eremnews_parser.py
 ───────────────────────────────
@@ -54,8 +53,8 @@ _NOISE_SELECTORS = [
     "[class*='newsletter']", "[class*='social']",
 ]
 
-# Pattern for sports article URLs
-_SPORTS_HREF_RE = re.compile(r"^/sports/[a-z0-9]+$")
+# Regex to match sports article slug URLs
+_SPORTS_SLUG_RE = re.compile(r"^/sports/[a-z0-9\-]+$")
 
 
 # ─────────────────────────────────────────────────────────────────────────────
@@ -70,14 +69,16 @@ def parse_article_list(
     """
     Parse the Eram News sports listing page.
 
-    Uses multiple fallback strategies to find articles:
-    1. The Tailwind grid container (primary)
-    2. Direct search for all /sports/ links in the page (fallback)
+    Strategy 1 (primary): Find the Tailwind grid container with
+      'desktop:grid-cols-4' and 'tablet:grid-cols-2' classes.
+    Strategy 2 (fallback): Search all <a> links matching /sports/SLUG pattern,
+      deduplicate, and build article stubs from them.
     """
     soup = BeautifulSoup(html, _BS_PARSER)
 
-    # ── Strategy 1: Find the sports grid container ────────────────────────────
+    # ── Strategy 1: grid container ────────────────────────────────────────────
     grid = _find_sports_grid(soup)
+
     if grid:
         cards = [c for c in grid.children if c.name]
         articles: list[RawArticle] = []
@@ -90,27 +91,24 @@ def parse_article_list(
                 logger.warning(f"Failed to parse card: {exc}")
 
         if articles:
-            articles = _deduplicate(articles)
-            logger.debug(f"Parsed {len(articles)} articles via grid strategy")
-            return articles
+            unique = _dedup(articles)
+            logger.debug(f"Parsed {len(unique)} articles from Eram News grid")
+            return unique
 
-    # ── Strategy 2: Fallback — find all /sports/ links directly ──────────────
-    logger.warning(
-        f"Sports grid not found for subcategory={subcategory}. "
-        f"Falling back to direct link search."
-    )
-    articles = _parse_articles_from_links(soup, subcategory, base_url)
-    if articles:
-        logger.debug(f"Parsed {len(articles)} articles via fallback link strategy")
-        return articles
+        logger.warning(
+            f"Grid found but no cards parsed for subcategory={subcategory}. "
+            f"Falling back to direct link search."
+        )
 
-    # ── Debug: log what tags are present ────────────────────────────────────
-    all_tags = {t.name for t in soup.find_all(True)}
-    logger.warning(
-        f"No articles found for subcategory={subcategory}. "
-        f"Tags present: {sorted(all_tags)}"
-    )
-    return []
+    else:
+        all_tags = {t.name for t in soup.find_all(True)}
+        logger.warning(
+            f"Sports grid not found for subcategory={subcategory}. "
+            f"Falling back to direct link search. Tags present: {sorted(all_tags)}"
+        )
+
+    # ── Strategy 2: direct link search ───────────────────────────────────────
+    return _parse_via_direct_links(soup, subcategory, base_url)
 
 
 def parse_article_detail(html: str, raw: RawArticle) -> RawArticle:
@@ -142,129 +140,136 @@ def parse_article_detail(html: str, raw: RawArticle) -> RawArticle:
 
 
 # ─────────────────────────────────────────────────────────────────────────────
-# Grid finder — multiple strategies
+# Grid finder
 # ─────────────────────────────────────────────────────────────────────────────
 
 def _find_sports_grid(soup: BeautifulSoup) -> Optional[Tag]:
     """
-    Find the article grid container using multiple CSS class strategies.
-    The site uses Tailwind responsive prefixes like 'desktop:grid-cols-4'.
+    Find the article grid container.
+    Matches: div with both 'desktop:grid-cols-4' and 'tablet:grid-cols-2' in class.
+    Falls back to any div with 'grid-cols' in class that contains sports links.
     """
-    # Strategy A: Original selector — both desktop and tablet classes present
-    def _is_sports_grid_a(tag: Tag) -> bool:
+    # Primary: exact Tailwind classes
+    def _is_sports_grid(tag: Tag) -> bool:
         if tag.name != "div":
             return False
         cls = " ".join(tag.get("class", []))
         return "desktop:grid-cols-4" in cls and "tablet:grid-cols-2" in cls
 
-    grid = soup.find(_is_sports_grid_a)
+    grid = soup.find(_is_sports_grid)
     if grid:
         return grid
 
-    # Strategy B: Just desktop:grid-cols-4 (tablet class may vary)
-    def _is_sports_grid_b(tag: Tag) -> bool:
-        if tag.name != "div":
+    # Fallback: any grid-like div that has sports article links as children
+    def _is_grid_with_sports(tag: Tag) -> bool:
+        if tag.name not in ("div", "section", "ul"):
             return False
         cls = " ".join(tag.get("class", []))
-        return "desktop:grid-cols-4" in cls
+        if "grid" not in cls and "list" not in cls:
+            return False
+        # Must have at least 2 sports links as descendants
+        links = tag.find_all("a", href=_SPORTS_SLUG_RE)
+        return len(links) >= 2
 
-    grid = soup.find(_is_sports_grid_b)
-    if grid:
-        # Only return if it has multiple sports links as children
-        links = grid.find_all("a", href=_SPORTS_HREF_RE)
-        if len(links) >= 2:
-            return grid
-
-    # Strategy C: Find div containing the most /sports/ links
-    best_div: Optional[Tag] = None
-    best_count = 0
-    for div in soup.find_all("div"):
-        links = div.find_all("a", href=_SPORTS_HREF_RE, recursive=False)
-        if len(links) > best_count:
-            best_count = len(links)
-            best_div = div
-
-    if best_count >= 2:
-        return best_div
-
-    return None
+    return soup.find(_is_grid_with_sports)
 
 
 # ─────────────────────────────────────────────────────────────────────────────
-# Fallback: parse articles directly from all /sports/ links
+# Fallback: parse directly from all sports links on the page
 # ─────────────────────────────────────────────────────────────────────────────
 
-def _parse_articles_from_links(
+def _parse_via_direct_links(
     soup: BeautifulSoup,
     subcategory: str,
     base_url: str,
 ) -> list[RawArticle]:
     """
-    Fallback parser: find all anchor tags pointing to /sports/SLUG
-    and build RawArticle stubs from them.
+    Fallback parser: find all <a href="/sports/SLUG" title="..."> links
+    on the page and build article stubs from them.
+    This works even when the Next.js grid hasn't fully hydrated.
     """
-    seen_hrefs: set[str] = set()
     articles: list[RawArticle] = []
 
-    for a in soup.find_all("a", href=_SPORTS_HREF_RE, title=True):
-        href = str(a["href"])
-        if href in seen_hrefs:
-            continue
-        seen_hrefs.add(href)
+    # Find all anchor tags matching the sports slug pattern
+    all_links = soup.find_all("a", href=_SPORTS_SLUG_RE)
 
-        title = str(a.get("title", "")).strip()
-        if not title:
-            h3 = a.find("h3")
-            if h3:
-                title = _clean_text(h3.get_text())
-        if not title or len(title) < 3:
-            continue
+    for a_tag in all_links:
+        try:
+            href = str(a_tag.get("href", ""))
+            if not href:
+                continue
 
-        url = base_url + href
+            # Get title from title attr, h3, or text content
+            title = str(a_tag.get("title", "")).strip()
+            if not title or len(title) < 3:
+                h3 = a_tag.find("h3")
+                if h3:
+                    title = _clean_text(h3.get_text())
+                else:
+                    title = _clean_text(a_tag.get_text())
 
-        # Look for image in surrounding context (parent card)
-        image_url: Optional[str] = None
-        card = a.parent
-        if card:
-            img = card.find("img")
+            if not title or len(title) < 3:
+                continue
+
+            url = base_url + href
+
+            # Try to get image from nearby img tag
+            image_url: Optional[str] = None
+            # Look in this link and parent for img
+            parent = a_tag.parent
+            search_scope = parent if parent else a_tag
+            img = search_scope.find("img") if search_scope else None
+            if not img:
+                img = a_tag.find("img")
             if img:
-                src = img.get("src", "")
+                src = str(img.get("src", ""))
                 if src and "data:image" not in src:
                     if "cdn.eremnews.com" in src and not src.endswith(".webp"):
                         src = src + ".webp"
                     image_url = src
 
-        # Look for publish date
-        publish_date: Optional[datetime] = None
-        if card:
-            time_el = card.find("time")
-            if time_el:
-                dt_attr = time_el.get("datetime")
-                if dt_attr:
-                    try:
-                        publish_date = datetime.fromisoformat(
-                            str(dt_attr).replace("Z", "+00:00")
-                        )
-                    except Exception:
-                        publish_date = _parse_arabic_date(
-                            time_el.get_text(strip=True)
-                        )
+            # Try to get date from nearby time tag
+            publish_date: Optional[datetime] = None
+            if parent:
+                time_el = parent.find("time")
+                if time_el:
+                    dt_attr = time_el.get("datetime")
+                    if dt_attr:
+                        try:
+                            publish_date = datetime.fromisoformat(
+                                str(dt_attr).replace("Z", "+00:00")
+                            )
+                        except Exception:
+                            publish_date = _parse_arabic_date(
+                                time_el.get_text(strip=True)
+                            )
 
-        articles.append(
-            RawArticle(
+            articles.append(RawArticle(
                 title=title,
                 url=url,
                 image_url=image_url,
                 publish_date=publish_date,
                 subcategory=subcategory,
-            )
+            ))
+
+        except Exception as exc:
+            logger.warning(f"Failed to parse link stub: {exc}")
+
+    unique = _dedup(articles)
+    if unique:
+        logger.info(
+            f"Fallback parser found {len(unique)} articles via direct link search"
+        )
+    else:
+        logger.warning(
+            f"No articles found for subcategory={subcategory} via any strategy."
         )
 
-    return _deduplicate(articles)
+    return unique
 
 
 # ─────────────────────────────────────────────────────────────────────────────
-# Card parser
+# Card parser (used when grid IS found)
 # ─────────────────────────────────────────────────────────────────────────────
 
 def _parse_card(
@@ -290,7 +295,7 @@ def _parse_card(
     # Find the title link — has both href="/sports/..." AND title attribute
     title_a = card.find(
         "a",
-        href=_SPORTS_HREF_RE,
+        href=_SPORTS_SLUG_RE,
         title=True,
     )
 
@@ -315,7 +320,6 @@ def _parse_card(
     if img:
         src = img.get("src", "")
         if src and "data:image" not in src:
-            # Ensure full .webp extension (sometimes truncated)
             if "cdn.eremnews.com" in src and not src.endswith(".webp"):
                 src = src + ".webp"
             image_url = src
@@ -449,8 +453,8 @@ def _extract_date(soup: BeautifulSoup) -> Optional[datetime]:
 # Utilities
 # ─────────────────────────────────────────────────────────────────────────────
 
-def _deduplicate(articles: list[RawArticle]) -> list[RawArticle]:
-    """Remove duplicate articles by URL, preserving order."""
+def _dedup(articles: list[RawArticle]) -> list[RawArticle]:
+    """Deduplicate articles by URL, preserving order."""
     seen: set[str] = set()
     unique: list[RawArticle] = []
     for a in articles:
