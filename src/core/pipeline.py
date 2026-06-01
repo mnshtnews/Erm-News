@@ -61,9 +61,24 @@ class ArticlePipeline:
 
         existing_hashes = await self._repository.get_all_hashes()
         existing_urls   = await self._repository.get_all_urls()
+        latest_url      = await self._repository.get_latest_url()
 
+        # Seed hash-based dedup so we never re-save to DB
         await self._cache.bulk_mark_seen(existing_hashes)
-        await self._scraper.seed_seen_urls(existing_urls)
+
+        # Seed URL-based dedup in the scraper — BUT exclude the single latest
+        # article URL so that on first poll we always fetch + send it to confirm
+        # the pipeline is alive.  The repository dedup (exists_by_hash) will
+        # block it from being written to DB again; only the Telegram send runs.
+        urls_to_seed = existing_urls
+        if latest_url and latest_url in urls_to_seed:
+            urls_to_seed = existing_urls - {latest_url}
+            logger.info(
+                f"Excluded latest article URL from seen set for proof-of-life check: "
+                f"{latest_url}"
+            )
+
+        await self._scraper.seed_seen_urls(urls_to_seed)
 
         self._running = True
         logger.info("ArticlePipeline started ✓")
@@ -138,6 +153,9 @@ class ArticlePipeline:
         Full pipeline for a single article:
         deduplicate → classify → save → notify.
         Returns the saved Article or None if skipped/failed.
+
+        Special case: if the article is already in DB (proof-of-life resend),
+        we skip classification/save but still send to Telegram.
         """
         # 1. Redis deduplication (fast path)
         if await self._cache.is_seen(raw.article_hash):
@@ -145,9 +163,26 @@ class ArticlePipeline:
             return None
 
         # 2. DB deduplication (authoritative)
-        if await self._repository.exists_by_hash(raw.article_hash):
+        already_in_db = await self._repository.exists_by_hash(raw.article_hash)
+        if already_in_db:
             await self._cache.mark_seen(raw.article_hash)
-            logger.debug(f"Already in DB, skipping: {raw.url}")
+            # Check if Telegram was already sent — if not, send now (proof-of-life)
+            sent_already = await self._repository.is_telegram_sent(raw.article_hash)
+            if not sent_already:
+                logger.info(
+                    f"Article in DB but Telegram not sent — sending now: {raw.url}"
+                )
+                # Build minimal article for sending
+                article = Article(
+                    **raw.model_dump(),
+                    status=ScrapingStatus.CLASSIFIED,
+                    scraped_at=datetime.utcnow(),
+                )
+                sent = await self._telegram.send(article)
+                if sent:
+                    await self._repository.update_telegram_sent(article.article_hash)
+            else:
+                logger.debug(f"Already in DB and Telegram sent, skipping: {raw.url}")
             return None
 
         # 3. Classify
